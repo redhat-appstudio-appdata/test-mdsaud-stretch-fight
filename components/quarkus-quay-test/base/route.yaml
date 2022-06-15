@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: quarkus-quay-test
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: quarkus-quay-test
+    app.kubernetes.io/part-of: test
+  name: quarkus-quay-test
+  namespace: mdsaud
+spec:
+  port:
+    targetPort: 8080
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: quarkus-quay-test
+    weight: 100
+status: {}
